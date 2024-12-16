@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Аниме</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <a class="logo" href="index.html">AniRom</a>
+        <input type="text" id="search" placeholder="Поиск аниме..." onkeyup="searchAnime()">
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html">Новое</a></li>
+            <li class="nav-item"><a href="famous.html">Популярное</a></li>
+            <li class="nav-item"><a href="best.html">Лучшее</a></li>
+        </ul>
+    </nav>
+                <!-- Бургер-кнопка для мобильных устройств -->
+                <button id="burgerButton" class="burger-button" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+    </header>
+    
+        
+        <!-- Боковая панель меню -->
+        
+    
+
+    <div class="carousel">
+        <div class="carousel__track-container">
+            <div class="carousel__track">
+                <div class="carousel__slide">
+                    <img src="images/anya_image1.webp" alt="Slide 1">
+                    <div class="carousel__info">
+                        <h3>Аня иногда кокочет по русски</h3>
+                        <a href="anime.html?id=1" class="watch-button">Смотреть</a>
+                    </div>
+                </div>
+                <div class="carousel__slide">
+                    <img src="images/star_child.jpg" alt="Slide 2">
+                    <div class="carousel__info">
+                        <h3>Звездное дитя</h3>
+                        <a href="anime.html?id=2" class="watch-button">Смотреть</a>
+                    </div>
+                </div>
+                <div class="carousel__slide">
+                    <img src="images/demon_slayer.jpg" alt="Slide 2">
+                    <div class="carousel__info">
+                        <h3>Клинок рассекающий демонов</h3>
+                        <a href="anime.html?id=3" class="watch-button">Смотреть</a>
+                    </div>
+                </div>
+                <div class="carousel__slide">
+                    <img src="images/sword_master.jpeg" alt="Slide 2">
+                    <div class="carousel__info">
+                        <h3>Мастер меча огней</h3>
+                        <a href="anime.html?id=4" class="watch-button">Смотреть</a>
+                    </div>
+                </div>
+                <div class="carousel__slide">
+                    <img src="images/frankse.jpg" alt="Slide 2">
+                    <div class="carousel__info">
+                        <h3>Любимый во Франксе</h3>
+                        <a href="anime.html?id=5" class="watch-button">Смотреть</a>
+                    </div>
+                </div>
+                <!-- Добавьте больше слайдов по аналогии -->
+            </div>
+        </div>
+        <button class="carousel-button carousel-button--prev">←</button>
+        <button class="carousel-button carousel-button--next">→</button>
+    </div>
+    
+    <main>
+        <h1>Новое аниме</h1>
+        <div class="anime-grid" id="animeGrid">
+            <!-- Карточки с аниме будут добавлены через JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__addr">
+            <h1 class="footer__logo">AniRom</h1>
+            <h2>Контакты</h2>
+            <h3>Tg: Giaquz</h3>
+        </div>
+    
+        <ul class="footer__nav">
+            <li class="nav__item">
+                <h2 class="nav__title">Медиа</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">YT</a></li>
+                </ul>
+            </li>
+        </ul>
+    
+        <div class="legal__links">
+            <span>AniRom <span class="heart">♥️</span> Добро пожаловать на наш сайт</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

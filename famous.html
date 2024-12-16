@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Аниме</title>
+    <link rel="stylesheet" href="style.css"> <!-- Убедитесь, что этот файл доступен -->
+</head>
+<body>
+    <header>
+        <a class="logo" href="index.html">AniRom</a>
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__list-item">
+                    <a class="menu__list-link" href="index.html">Новое</a>
+                </li>
+                <li class="menu__list-item">
+                    <a class="menu__list-link" href="famous.html">Популярное</a>
+                </li>
+                <li class="menu__list-item">
+                    <a class="menu__list-link" href="best.html">Лучшее</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h1>Популярное аниме</h1>
+        <div class="anime-grid" id="popularGrid">
+            <!-- Карточки с аниме будут добавлены через JavaScript -->
+        </div>
+    </section>
+    
+    
+    
+    
+
+    <script>
+        
+const animeData = [
+    { id: 1, title: "Аня иногда кокочет по русски", image: "images/anya_image1.webp", visits: 43232, rating: 7.9 },
+    { id: 2, title: "Звездное дитя", image: "images/star_child.jpg", visits: 5299,  rating: 7.9 },
+    { id: 3, title: "Клинок рассекающий демонов", image: "images/demon_slayer.jpg", visits: 116010,  rating: 8.2 },
+    { id: 4, title: "Мастер меча огней", image: "images/sword_master.jpeg", visits: 61594,  rating: 7.9 },
+    { id: 5, title: "Любимый во Франксе", image: "images/frankse.jpg", visits: 61625, rating: 7.3 },
+    { id: 6, title: "Токийский гуль", image: "images/tokil.png", visits: 92798, rating: 7.1 },
+    { id: 7, title: "Хоримия", image: "images/horomia.jpg", visits: 23687, rating: 7.8 },
+    { id: 8, title: "Моя девушка не только милая", image: "images/mygerl.jpg", visits: 3032, rating: 6.4 },
+    { id: 9, title: "Мастера меча онлайн", image: "images/masteryonly.jpg", visits: 61600, rating: 7.9 },
+    { id: 10, title: "Re: Zero – жизнь с нуля в другом мире", image: "images/rezero.jpg", visits: 37391, rating: 7.6 },
+    { id: 11, title: "Поднятие уровня в одиночку", image: "images/levelone.jpg", visits: 22935, rating: 8.1 },
+    { id: 12, title: "Город, в котором меня нет", image: "images/cityone.jpg", visits: 45731, rating: 8.5 }
+];
+document.addEventListener("DOMContentLoaded", function() {
+   loadPopularAnime();
+   loadAnime();
+     // Добавляем этот вызов для загрузки популярных аниме
+});     
+
+function loadPopularAnime() {
+    const PopGrid = document.getElementById("popularGrid");
+    
+    if (!PopGrid) {
+        console.error("Element with id 'popularGrid' not found");
+        return;
+    }
+
+    PopGrid.innerHTML = ""; 
+
+    // Выбираем топ-10 популярных аниме
+    const PopAnime = animeData.sort((a, b) => b.visits - a.visits).slice(0, 10);
+    
+    PopAnime.forEach(anime => {
+        const card = document.createElement("div");
+        card.className = "anime-card";
+        card.onclick = () => openAnimePage(anime.id);
+        
+        const img = document.createElement("img");
+        img.src = anime.image;
+        img.alt = anime.title;
+        
+        const title = document.createElement("h3");
+        title.textContent = anime.title;
+        
+        card.appendChild(img);
+        card.appendChild(title);
+        PopGrid.appendChild(card);
+        
+        // Запоминаем выбранный аниме в localStorage
+        localStorage.setItem("selectedAnimeId", anime.id);
+    });
+}
+    </script>
+    <footer class="footer">
+        <div class="footer__addr">
+            <h1 class="footer__logo">AniRom</h1>
+            <h2>Контакты</h2>
+            <h3>Tg: Giaquz</h3>
+        </div>
+        <ul class="footer__nav">
+            <li class="nav__item">
+                <h2 class="nav__title">Медиа</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">YT</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="legal__links">
+            <span>AniRom <span class="heart">♥️</span> Добро пожаловать на наш сайт</span>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script> 
+</body>
+</html>

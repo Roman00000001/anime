@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Аниме</title>
+    <link rel="stylesheet" href="style.css"> <!-- Убедитесь, что этот файл доступен -->
+</head>
+<body>
+    <header>
+        <a class="logo" href="index.html">AniRom</a>
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__list-item">
+                    <a class="menu__list-link" href="index.html">Новое</a>
+                </li>
+                <li class="menu__list-item">
+                    <a class="menu__list-link" href="famous.html">Популярное</a>
+                </li>
+                <li class="menu__list-item">
+                    <a class="menu__list-link" href="best.html">Лучшее</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <main>
+        <h1>Лучшее (по рейтингу)</h1>
+        <div class="anime-grid" id="bestGrid">
+            <!-- Карточки с аниме будут добавлены через JavaScript -->
+        </div>
+    </main>
+
+    <main>
+        <h1>Новое аниме</h1>
+        <div class="anime-grid" id="animeGrid">
+            <!-- Карточки с аниме будут добавлены через JavaScript -->
+        </div>
+    </main>
+    <script>
+    // Загружаем данные аниме из JSON файла
+document.addEventListener("DOMContentLoaded", function() {
+    loadAnime();
+    loadBestAnime(); // Добавляем этот вызов для загрузки лучших аниме
+});     
+    function loadBestAnime() {
+    const BestGrid = document.getElementById("bestGrid");
+    BestGrid.innerHTML = ""; 
+    
+    // Выбираем топ-10 популярных аниме
+    const BestAnime = animeData.sort((a, b) => b.rating - a.rating).slice(0, 10);
+    
+    BestAnime.forEach(anime => {
+        const card = document.createElement("div");
+        card.className = "anime-card";
+        card.onclick = () => openAnimePage(anime.id);
+        
+        const img = document.createElement("img");
+        img.src = anime.image;
+        img.alt = anime.title;
+        
+        const title = document.createElement("h3");
+        title.textContent = anime.title;
+        
+        card.appendChild(img);
+        card.appendChild(title);
+        BestGrid.appendChild(card);
+        
+        // Запоминаем выбранный аниме в localStorage
+        localStorage.setItem("selectedAnimeId", anime.id);
+
+    });
+    
+    
+}
+    </script>
+    
+    <footer class="footer">
+        <div class="footer__addr">
+            <h1 class="footer__logo">AniRom</h1>
+            <h2>Контакты</h2>
+            <h3>Tg: Giaquz</h3>
+        </div>
+        <ul class="footer__nav">
+            <li class="nav__item">
+                <h2 class="nav__title">Медиа</h2>
+                <ul class="nav__ul">
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">YT</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="legal__links">
+            <span>AniRom <span class="heart">♥️</span> Добро пожаловать на наш сайт</span>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script> 
+</body>
+</html>

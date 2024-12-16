@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аниме Информация</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1 id="animeTitle">Название Аниме</h1>
+</header>
+<main>
+    <div class="anime-info">
+        <img id="animeImage" src="" alt="Картинка Аниме">
+        <p id="animeDescription">Описание аниме...</p>
+    </div>
+</main>
+<h2>Выберите сезон</h2>
+<select id="seasonSelect">
+    <!-- Опции сезонов будут добавлены через JavaScript -->
+</select>
+
+<h2>Выберите серию</h2>
+<div id="episodeList">
+    <!-- Кнопки серий будут добавлены через JavaScript -->
+</div>
+<script>
+    let animeData;
+    let selectedSeason = 1;
+
+    async function loadAnimeData() {
+        const response = await fetch('data/animeData.json');
+        animeData = await response.json();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const animeId = urlParams.get("id"); // Получаем ID из URL
+        const anime = animeData[animeId];
+
+        if (anime) {
+            document.getElementById("animeTitle").textContent = anime.title;
+            document.getElementById("animeImage").src = anime.image;
+            document.getElementById("animeDescription").textContent = anime.description;
+
+            populateSeasons(anime);
+            loadEpisodes(anime, selectedSeason);
+        } else {
+            console.error("Аниме с данным ID не найдено");
+        }
+    }
+
+    function populateSeasons(anime) {
+        const seasonSelect = document.getElementById("seasonSelect");
+        seasonSelect.innerHTML = '';
+
+        // Добавляем сезоны в select
+        Object.keys(anime.seasons).forEach(seasonNum => {
+            const option = document.createElement("option");
+            option.value = seasonNum;
+            option.textContent = `Сезон ${seasonNum}`;
+            seasonSelect.appendChild(option);
+        });
+
+        seasonSelect.addEventListener("change", (event) => {
+            selectedSeason = event.target.value;
+            loadEpisodes(animeData[localStorage.getItem("selectedAnimeId")], selectedSeason);
+        });
+    }
+
+    function loadEpisodes(anime, season) {
+        const episodeList = document.getElementById("episodeList");
+        episodeList.innerHTML = ''; // Очищаем список эпизодов
+
+        const episodes = anime.seasons[season];
+        if (episodes) {
+            Object.keys(episodes).forEach(episodeNum => {
+                const episodeButton = document.createElement("button");
+                episodeButton.textContent = `Серия ${episodeNum}`;
+                episodeButton.onclick = () => openEpisodePage(episodeNum);
+                episodeList.appendChild(episodeButton);
+            });
+        } else {
+            episodeList.textContent = "Эпизоды не найдены.";
+        }
+    }
+
+    function openEpisodePage(episodeNumber) {
+        localStorage.setItem("selectedEpisode", episodeNumber);
+        localStorage.setItem("selectedSeason", selectedSeason);
+        window.location.href = `episode.html?id=${localStorage.getItem("selectedAnimeId")}&episode=${episodeNumber}&season=${selectedSeason}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", loadAnimeData);
+</script>
+</body>
+</html>

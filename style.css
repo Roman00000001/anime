@@ -1,0 +1,440 @@
+
+/* Основные стили для всей страницы */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0d0d0d; /* Темный фон для улучшения контраста */
+    color: #f4f4f9;
+    line-height: 1.6;
+}
+
+/* Заголовок и поиск */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #101422;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ccebfd;
+    text-decoration: none;
+}
+
+header input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    max-width: 600px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #34495e;
+    color: #f4f4f9;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+header input[type="text"]:focus {
+    background-color: #2c3e50;
+    outline: none;
+}
+
+/* Стили каруселей */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px; /* Максимальная ширина карусели */
+    margin: 20px auto; /* Центрируем карусель */
+}
+.carousel__track-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Скрытие лишних частей слайдов */
+}
+
+.carousel__track {
+    display: flex;
+    transition: transform 0.3s ease-in-out; /* Плавный переход при смене слайдов */
+}
+
+.carousel__slide {
+    min-width: 100%; /* Каждый слайд занимает 100% ширины карусели */
+    box-sizing: border-box;
+    position: relative;
+}
+
+.carousel__slide img {
+    width: 100%; /* Изображение растягивается на всю ширину слайда */
+    height: auto; /* Высота будет пропорциональна ширине */
+    max-height: 400px; /* Ограничиваем максимальную высоту изображения */
+    object-fit: cover; /* Обеспечиваем обрезку изображения для сохранения пропорций */
+}
+
+.carousel__info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+}
+
+.watch-button {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #ff0000;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Кнопки карусели */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button--prev {
+    left: 10px;
+}
+
+.carousel-button--next {
+    right: 10px;
+}
+
+
+#menuButton {
+    font-size: 24px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.sidebar-open #sidebar {
+    left: 0;
+}
+
+.carousel img {
+    width: 100%;
+    display: block;
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Сетка аниме */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Карточки аниме */
+.anime-card {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.anime-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.anime-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.anime-card img:hover {
+    filter: brightness(90%);
+}
+
+.anime-card h3 {
+    padding: 10px;
+    font-size: 18px;
+    color: #f4f4f9;
+}
+
+/* Страница информации об аниме */
+.anime-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.anime-info img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+}
+
+.anime-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+/* Список серий */
+#episodeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#episodeList button {
+    background-color: #f39c12;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#episodeList button:hover {
+    background-color: #e67e22;
+}
+
+/* Подвал */
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+    color: #ffffff;
+    background-color: #272B3B;
+    border-top: 1px solid #34495e;
+    flex-wrap: wrap;
+}
+
+.footer > * {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+.footer__logo {
+    font-family: 'Pacifico', cursive;
+    font-weight: 100;
+    text-transform: lowercase;
+    font-size: 1.8rem;
+    color: #ecf0f1;
+}
+
+.footeraddr h2, .footernav h2 {
+    font-size: 18px;
+    font-weight: 100;
+    color: #ecf0f1;
+}
+
+.footer__addr h3 {
+    font-size: 16px;
+    color: #0099ff;
+}
+
+.footer__nav a {
+    color: #0099ff;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.footer__nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* Меню */
+.menu__list {
+    display: flex;
+    list-style: none;
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем отступы */
+}
+
+.menu__list-item {
+    margin-right: 20px;
+}
+
+.menu__list-link {
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #00bbff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.menu__list-link:hover {
+    color: #f39c12;
+}
+.menulist-item{
+    margin-right: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s
+}
+
+/* Бургер-кнопка */
+.burger-button {
+    display: none; /* Скрываем кнопку на больших экранах */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+}
+
+.burger-button span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ff0000; /* Изменяем цвет */
+    transition: 0.3s;
+}
+
+/* Стили для бокового меню */
+
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .burger-button {
+        display: flex; /* Показываем бургер-кнопку на мобильных экранах */
+    }
+    
+    .menu {
+        display: none; /* Скрываем стандартное меню на мобильных устройствах */
+    }
+
+    /* Стили для открытого меню */
+    .side-menu.open {
+        left: 0; /* Показываем меню */
+    }
+}
+
+#seasonSelect::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #aaa;
+}
+
+#seasonSelect {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+#seasonSelect:hover {
+    background-color: #444;
+}
+
+#seasonSelect:focus {
+    border: 1px solid #555;
+}
+
+navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    float: left;
+}
+
+.nav-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.nav-item a:hover {
+    background-color: #575757;
+    transition: background-color 0.3s;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        display: none; /* Скрывает навигационную панель на экранах меньше 600px */
+    }
+}
